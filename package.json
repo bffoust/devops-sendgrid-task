@@ -11,13 +11,20 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/bffoust/devops-sendgrid-task/issues"
   },
   "homepage": "https://github.com/bffoust/devops-sendgrid-task#readme",
   "description": "",
   "dependencies": {
-    "azure-devops-extension-sdk": "^4.0.2"
+    "azure-pipelines-task-lib": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^24.1.0",
+    "@types/q": "^1.5.8",
+    "sync-request": "^6.1.0",
+    "typescript": "^5.8.3"
   }
 }

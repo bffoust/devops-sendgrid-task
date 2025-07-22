@@ -1,0 +1,31 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+  "id": "aeb96d05-a129-464f-98c3-7d097fd83dfc",
+  "name": "SU-SendGrid",
+  "friendlyName": "Stamping Up SendGrid",
+  "description": "This task sends emails using SendGrid.",
+  "helpMarkDown": "",
+  "category": "Utility",
+  "author": "Bruce Foust",
+  "version": {
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 0
+  },
+  "instanceNameFormat": "Echo $(samplestring)",
+  "inputs": [
+    {
+      "name": "samplestring",
+      "type": "string",
+      "label": "Sample String",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "A sample string"
+    }
+  ],
+  "execution": {
+    "Node20_1": {
+      "target": "index.js"
+    }
+  }
+}
