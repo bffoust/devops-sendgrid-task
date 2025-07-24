@@ -12,13 +12,6 @@ describe('Sample task tests', function () {
 
   });
 
-  it('should succeed with simple inputs', function (done: Mocha.Done) {
-    // Add success test here
-  });
-
-  it('it should fail if tool returns 1', function (done: Mocha.Done) {
-    // Add failure test here
-  });
 });
 
 it('should succeed with simple inputs', function (done: Mocha.Done) {
@@ -55,5 +48,7 @@ it('should fail if tool returns 1', function (done: Mocha.Done) {
     assert.equal(tr.errorIssues[0], 'Bad input was given', 'error issue output');
     assert.equal(tr.stdout.indexOf('Hello bad'), -1, 'Should not display Hello bad');
     done();
+  }).catch((error) => {
+    done(error); // Ensure the test case fails if there's an error
   });
 });
