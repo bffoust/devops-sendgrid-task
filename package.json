@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "test": "mocha buildandreleasetask/tests/_suite.js",
+    "test": "mocha devops-sendgrid-task/tests/_suite.js",
     "test:compile": "tsc && npm test"
   },
   "repository": {
