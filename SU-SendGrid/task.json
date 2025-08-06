@@ -1,0 +1,42 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+  "id": "1d03e40f-ba2b-48ca-b560-33ddc53caa01",
+  "name": "su-sendgrid",
+  "friendlyName": "Stampinup SendGgrid",
+  "description": "StampinUp SendGrid Azure DevOps Extension",
+  "helpMarkDown": "",
+  "category": "Utility",
+  "author": "Bruce Foust",
+  "version": {
+    "Major": 0,
+    "Minor": 1,
+    "Patch": 0
+  },
+  "instanceNameFormat": "Echo $(samplestring)",
+  "inputs": [
+    {
+      "name": "samplestring",
+      "type": "string",
+      "label": "Sample String",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "A sample string"
+    }
+  ],
+  "execution": {
+    "Node20_1": {
+      "target": "index.js"
+    }
+  },
+  "restrictions": {
+    "commands": {
+      "mode": "restricted"
+    },
+    "settableVariables": {
+      "allowed": [
+        "variable1",
+        "test*"
+      ]
+    }
+  }
+}
