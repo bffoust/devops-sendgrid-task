@@ -63,3 +63,6 @@ spec/
 *.vsix
 *.log
 *.map
+
+# DevOps task key
+.taskkey

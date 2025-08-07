@@ -1,0 +1,36 @@
+{
+  "manifestVersion": 1,
+  "id": "su-sendgrid",
+  "name": "StampinUp SendGrid",
+  "version": "0.1.1",
+  "publisher": "BFoust",
+  "targets": [
+      {
+          "id": "Microsoft.VisualStudio.Services"
+      }
+  ],
+  "description": "StampinUp SendGrid Azure DevOps Extension",
+  "categories": [
+      "Azure Pipelines"
+  ],
+  "icons": {
+      "default": "images/BF_logo.ico"
+  },
+  "files": [
+      {
+          "path": "SU-SendGrid"
+      }
+  ],
+  "contributions": [
+      {
+          "id": "su-sendgrid",
+          "type": "ms.vss-distributed-task.task",
+          "targets": [
+              "ms.vss-distributed-task.tasks"
+          ],
+          "properties": {
+              "name": "su-sendgrid"
+          }
+      }
+  ]
+ }

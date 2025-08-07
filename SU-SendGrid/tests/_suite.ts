@@ -33,7 +33,7 @@ it('should succeed with simple inputs', function (done: Mocha.Done) {
     assert.equal(tr.warningIssues.length, 0, "should have no warnings");
     assert.equal(tr.errorIssues.length, 0, "should have no errors");
     console.log(tr.stdout);
-    assert.equal(tr.stdout.indexOf('Hello human') >= 0, true, "should display Hello human");
+    assert.equal(tr.stdout.indexOf('Hello humanity') >= 0, true, "should display Hello humanity");
     done();
   }).catch((error) => {
     done(error); // Ensure the test case fails if there's an error

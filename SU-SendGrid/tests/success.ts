@@ -6,6 +6,6 @@ let taskPath = path.join(__dirname, '..', 'index.js');
 let tmr: tmrm.TaskMockRunner = new tmrm.TaskMockRunner(taskPath);
 
 // Set valid input for success scenario
-tmr.setInput('samplestring', 'human');
+tmr.setInput('samplestring', 'Bruce');
 
 tmr.run();
