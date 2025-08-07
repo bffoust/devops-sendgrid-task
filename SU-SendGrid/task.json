@@ -15,12 +15,28 @@
   "instanceNameFormat": "Echo $(samplestring)",
   "inputs": [
     {
-      "name": "samplestring",
+      "name": "SendGridAPIKey",
       "type": "string",
-      "label": "Sample String",
+      "label": "SendGgrid API Key",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "A sample string"
+      "helpMarkDown": "API Key given by SendGrid. You can generate an API Key from the SendGrid Portal"
+    },
+    {
+      "name": "senderEmailAddress",
+      "type": "string",
+      "label": "Sender Email Address",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Email address of the sender. The value can either be only the Email Address (Eg. john@example.com) or the Name and the Email Address (Eg. John Smith john@example.com)"
+    },
+    {
+      "name": "recipientEmailAddress",
+      "type": "string",
+      "label": "Recipient Email Address",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Email address(s) of the recipient(s). Use a comma (,) separated list if you have multiple email addresses. (Eg. john@example.com, bob@example.com). The email addresses can either be only the Email Address (Eg. john@example.com) or the Name and the Email Address (Eg. John Smith john@example.com)"
     }
   ],
   "execution": {
