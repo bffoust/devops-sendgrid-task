@@ -1,5 +1,6 @@
 import tl = require('azure-pipelines-task-lib/task');
 import { sendMail } from './mail';
+import * as fs from 'fs';
 
 export async function getInputs() {
   try {
@@ -8,13 +9,25 @@ export async function getInputs() {
     const recipientEmailAddress: string | undefined = tl.getInput('recipientEmailAddress', true);
     const emailSubject: string | undefined = tl.getInput('emailSubject', true);
     const emailBody: string | undefined = tl.getInput('emailBody', true);
-
+    const emailBodyText: string | undefined = tl.getInput('emailBodyText', false);
+    const emailBodyFilePath: string | undefined = tl.getInput('emailBodyFile', false);
+    let bodyText = '';
 
     if (!SendGridAPIKey || !senderEmailAddress || !recipientEmailAddress || !emailSubject || !emailBody) {
       throw new Error('One or more required inputs are missing.');
     }
 
-    return { SendGridAPIKey, senderEmailAddress, recipientEmailAddress, emailSubject, emailBody };
+    const normalizedEmailBody = emailBody.toLowerCase();
+
+    if (normalizedEmailBody === 'file' && emailBodyFilePath) {
+      bodyText = fs.readFileSync(emailBodyFilePath, 'utf8');
+    } else if (normalizedEmailBody === 'text' && emailBodyText) {
+      bodyText = emailBodyText;
+    } else {
+      throw new Error('Email body is required but not provided.');
+    }
+
+    return { SendGridAPIKey, senderEmailAddress, recipientEmailAddress, emailSubject, bodyText };
   } catch (err: any) {
     tl.setResult(tl.TaskResult.Failed, err.message);
     throw err;
@@ -23,15 +36,9 @@ export async function getInputs() {
 
 async function run() {
   try {
-    const { SendGridAPIKey, senderEmailAddress, recipientEmailAddress, emailSubject, emailBody} = await getInputs();
-    console.log('APIKey:', SendGridAPIKey);
-    console.log('Send mail from:', senderEmailAddress);
-    console.log('Send mail to:', recipientEmailAddress);
-    console.log('mail subject:', emailSubject);
-    console.log('mail body:', emailBody);
-
+    const { SendGridAPIKey, senderEmailAddress, recipientEmailAddress, emailSubject, bodyText } = await getInputs();
     // Call the sendMail function
-    await sendMail(SendGridAPIKey, senderEmailAddress, recipientEmailAddress, emailSubject, emailBody);
+    await sendMail(SendGridAPIKey, senderEmailAddress, recipientEmailAddress, emailSubject, bodyText);
   } catch (err: any) {
     tl.setResult(tl.TaskResult.Failed, err.message);
   }

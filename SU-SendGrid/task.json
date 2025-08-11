@@ -10,7 +10,7 @@
   "version": {
     "Major": 0,
     "Minor": 2,
-    "Patch": 2
+    "Patch": 6
   },
   "instanceNameFormat": "Echo $(samplestring)",
   "inputs": [
@@ -48,11 +48,33 @@
     },
     {
       "name": "emailBody",
-      "type": "string",
+      "type": "pickList",
       "label": "Email Body",
-      "defaultValue": "",
+      "defaultValue": "Text",
       "required": true,
-      "helpMarkDown": "Body of the email."
+      "helpMarkDown": "Body of the email.",
+      "options": {
+        "text": "Text",
+        "file": "File"
+      }
+    },
+    {
+      "name": "emailBodyText",
+      "type": "string",
+      "label": "Email Body text",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Path to the file containing the email body. This input is required if 'File' is selected for Email Body.",
+      "visibleRule": "emailBody = Text"
+    },
+    {
+      "name": "emailBodyFilePath",
+      "type": "string",
+      "label": "Email Body File Path",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Path to the file containing the email body. This input is required if 'File' is selected for Email Body.",
+      "visibleRule": "emailBody = File"
     }
   ],
   "execution": {
