@@ -1,42 +1,40 @@
 import tl = require('azure-pipelines-task-lib/task');
+import { sendMail } from './mail';
+
+export async function getInputs() {
+  try {
+    const SendGridAPIKey: string | undefined = tl.getInput('SendGridAPIKey', true);
+    const senderEmailAddress: string | undefined = tl.getInput('senderEmailAddress', true);
+    const recipientEmailAddress: string | undefined = tl.getInput('recipientEmailAddress', true);
+    const emailSubject: string | undefined = tl.getInput('emailSubject', true);
+    const emailBody: string | undefined = tl.getInput('emailBody', true);
+
+
+    if (!SendGridAPIKey || !senderEmailAddress || !recipientEmailAddress || !emailSubject || !emailBody) {
+      throw new Error('One or more required inputs are missing.');
+    }
+
+    return { SendGridAPIKey, senderEmailAddress, recipientEmailAddress, emailSubject, emailBody };
+  } catch (err: any) {
+    tl.setResult(tl.TaskResult.Failed, err.message);
+    throw err;
+  }
+}
 
 async function run() {
   try {
-    const inputString1: string | undefined = tl.getInput('SendGridAPIKey', true);
-    if (inputString1 == 'bad') {
-      tl.setResult(tl.TaskResult.Failed, 'Bad input was given');
-      return;
-    }
-    console.log('APIKey:', inputString1);
-  }
-  catch (err: any) {
+    const { SendGridAPIKey, senderEmailAddress, recipientEmailAddress, emailSubject, emailBody} = await getInputs();
+    console.log('APIKey:', SendGridAPIKey);
+    console.log('Send mail from:', senderEmailAddress);
+    console.log('Send mail to:', recipientEmailAddress);
+    console.log('mail subject:', emailSubject);
+    console.log('mail body:', emailBody);
+
+    // Call the sendMail function
+    await sendMail(SendGridAPIKey, senderEmailAddress, recipientEmailAddress, emailSubject, emailBody);
+  } catch (err: any) {
     tl.setResult(tl.TaskResult.Failed, err.message);
   }
-
-  try {
-    const inputString2: string | undefined = tl.getInput('senderEmailAddress', true);
-    if (inputString2 == 'bad') {
-      tl.setResult(tl.TaskResult.Failed, 'Bad input was given');
-      return;
-    }
-    console.log('Send mail from:', inputString2);
-  }
-  catch (err: any) {
-    tl.setResult(tl.TaskResult.Failed, err.message);
-  }
-
-  try {
-    const inputString3: string | undefined = tl.getInput('recipientEmailAddress', true);
-    if (inputString3 == 'bad') {
-      tl.setResult(tl.TaskResult.Failed, 'Bad input was given');
-      return;
-    }
-    console.log('Send mail to:', inputString3);
-  }
-  catch (err: any) {
-    tl.setResult(tl.TaskResult.Failed, err.message);
-  }
-
 }
 
 run();

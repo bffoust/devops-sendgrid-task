@@ -1,35 +1,32 @@
 import MailService = require("@sendgrid/mail/src/mail");
+import tl = require('azure-pipelines-task-lib/task');
+//import { getInputs } from './index';
 
-export = MailService;
-
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-const msg = {
-  to: 'test@example.com',
-  from: 'test@example.com', // Use the email address or domain you verified above
-  subject: 'Sending with Twilio SendGrid is Fun',
-  text: 'and easy to do anywhere, even with Node.js',
-  html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-};
-//ES6
-sgMail
-  .send(msg)
-  .then(() => {}, error => {
-    console.error(error);
-
-    if (error.response) {
-      console.error(error.response.body)
-    }
-  });
-//ES8
-(async () => {
+//export = MailService;
+export async function sendMail(SendGridAPIKey: string, senderEmailAddress: string, recipientEmailAddress: string, emailSubject: string, emailBody: string) {
   try {
-    await sgMail.send(msg);
-  } catch (error) {
-    console.error(error);
+    const sgMail = require('@sendgrid/mail');
+    sgMail.setApiKey(SendGridAPIKey);
 
-    if (error.response) {
-      console.error(error.response.body)
-    }
+    console.log('Using API Key:', SendGridAPIKey);
+    console.log('Sending mail from:', senderEmailAddress);
+    console.log('Sending mail to:', recipientEmailAddress);
+    console.log('Sending mail to:', emailSubject);
+    console.log('Mail body:', emailBody);
+
+    // html field is optional, you can remove it if not needed. it will override the text field
+    const msg = {
+      to: recipientEmailAddress,
+      from: senderEmailAddress,
+      subject: emailSubject,
+      text: emailBody,
+      html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+    };
+
+    await sgMail.send(msg);
+    console.log('Mail sent successfully');
+  } catch (err: any) {
+    tl.setResult(tl.TaskResult.Failed, err.message);
+//    console.error('Failed to send mail:', err.message);
   }
-})();
+}

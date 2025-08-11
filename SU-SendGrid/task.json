@@ -37,6 +37,22 @@
       "defaultValue": "",
       "required": true,
       "helpMarkDown": "Email address(s) of the recipient(s). Use a comma (,) separated list if you have multiple email addresses. (Eg. john@example.com, bob@example.com). The email addresses can either be only the Email Address (Eg. john@example.com) or the Name and the Email Address (Eg. John Smith john@example.com)"
+    },
+    {
+      "name": "emailSubject",
+      "type": "string",
+      "label": "Subject",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Subject of the email."
+    },
+    {
+      "name": "emailBody",
+      "type": "string",
+      "label": "Email Body",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Body of the email."
     }
   ],
   "execution": {
