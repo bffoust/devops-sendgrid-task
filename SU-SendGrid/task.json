@@ -9,18 +9,91 @@
   "author": "Bruce Foust",
   "version": {
     "Major": 0,
-    "Minor": 1,
-    "Patch": 1
+    "Minor": 2,
+    "Patch": 14
   },
-  "instanceNameFormat": "Echo $(samplestring)",
+  "instanceNameFormat": "Stampinup SendGgrid",
+  "groups": [
+    {
+      "name": "ConfigureSendGrid",
+      "displayName": "Configure SendGrid",
+      "isExpanded": true
+    },
+    {
+      "name": "ConfigureEmail",
+      "displayName": "Configure E-mail",
+      "isExpanded": true
+    }
+  ],
   "inputs": [
     {
-      "name": "samplestring",
+      "name": "SendGridAPIKey",
       "type": "string",
-      "label": "Sample String",
+      "label": "SendGgrid API Key",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "A sample string"
+      "helpMarkDown": "API Key given by SendGrid. You can generate an API Key from the SendGrid Portal",
+      "groupName": "ConfigureSendGrid"
+    },
+    {
+      "name": "senderEmailAddress",
+      "type": "string",
+      "label": "Sender Email Address",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Email address of the sender. The value can either be only the Email Address (Eg. john@example.com) or the Name and the Email Address (Eg. John Smith john@example.com)",
+      "groupName": "ConfigureEmail"
+    },
+    {
+      "name": "recipientEmailAddress",
+      "type": "string",
+      "label": "Recipient Email Address",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Email address(s) of the recipient(s). Use a comma (,) separated list if you have multiple email addresses. (Eg. john@example.com, bob@example.com). The email addresses can either be only the Email Address (Eg. john@example.com) or the Name and the Email Address (Eg. John Smith john@example.com)",
+      "groupName": "ConfigureEmail"
+    },
+    {
+      "name": "emailSubject",
+      "type": "string",
+      "label": "Subject",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Subject of the email.",
+      "groupName": "ConfigureEmail"
+    },
+    {
+      "name": "emailBody",
+      "type": "pickList",
+      "label": "Email Body",
+      "defaultValue": "Text",
+      "required": true,
+      "helpMarkDown": "Body of the email.",
+      "options": {
+        "text": "Text",
+        "file": "File"
+      },
+      "groupName": "ConfigureEmail"
+    },
+    {
+      "name": "emailBodyText",
+      "type": "string",
+      "label": "Email Body text",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Email body text. HTML tags are allowed. This input is required if 'Text' is selected for Email Body.",
+      "visibleRule": "emailBody = Text",
+      "groupName": "ConfigureEmail"
+    },
+    {
+      "name": "emailBodyFilePath",
+      "type": "string",
+      "label": "Email Body File Path",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Path to the file containing the email body. This input is required if 'File' is selected for Email Body.",
+      "visibleRule": "emailBody = File",
+      "groupName": "ConfigureEmail"
     }
   ],
   "execution": {
