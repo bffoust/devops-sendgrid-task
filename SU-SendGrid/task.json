@@ -8,9 +8,9 @@
   "category": "Utility",
   "author": "Bruce Foust",
   "version": {
-    "Major": 0,
-    "Minor": 2,
-    "Patch": 6
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 0
   },
   "instanceNameFormat": "Echo $(samplestring)",
   "inputs": [

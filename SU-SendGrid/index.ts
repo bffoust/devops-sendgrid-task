@@ -10,7 +10,7 @@ export async function getInputs() {
     const emailSubject: string | undefined = tl.getInput('emailSubject', true);
     const emailBody: string | undefined = tl.getInput('emailBody', true);
     const emailBodyText: string | undefined = tl.getInput('emailBodyText', false);
-    const emailBodyFilePath: string | undefined = tl.getInput('emailBodyFile', false);
+    const emailBodyFilePath: string | undefined = tl.getInput('emailBodyFilePath', false);
     let bodyText = '';
 
     if (!SendGridAPIKey || !senderEmailAddress || !recipientEmailAddress || !emailSubject || !emailBody) {
@@ -20,8 +20,10 @@ export async function getInputs() {
     const normalizedEmailBody = emailBody.toLowerCase();
 
     if (normalizedEmailBody === 'file' && emailBodyFilePath) {
+      console.log('emailBodyFilePath:', emailBodyFilePath);
       bodyText = fs.readFileSync(emailBodyFilePath, 'utf8');
     } else if (normalizedEmailBody === 'text' && emailBodyText) {
+      console.log('emailBodyText:', emailBodyText);
       bodyText = emailBodyText;
     } else {
       throw new Error('Email body is required but not provided.');

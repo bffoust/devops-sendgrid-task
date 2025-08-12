@@ -7,13 +7,10 @@ export async function sendMail(SendGridAPIKey: string, senderEmailAddress: strin
     const sgMail = require('@sendgrid/mail');
     sgMail.setApiKey(SendGridAPIKey);
 
-    console.log('Using API Key:', SendGridAPIKey);
     console.log('Sending mail from:', senderEmailAddress);
     console.log('Sending mail to:', recipientEmailAddress);
-    console.log('Sending mail to:', emailSubject);
-    console.log('mail body text:', emailBodyText);
+    console.log('mail subject:', emailSubject);
 
-    // html field is optional, you can remove it if not needed. it will override the text field
     const msg = {
       to: recipientEmailAddress,
       from: senderEmailAddress,
@@ -21,7 +18,7 @@ export async function sendMail(SendGridAPIKey: string, senderEmailAddress: strin
       html: emailBodyText
     };
 
-//    await sgMail.send(msg);
+    await sgMail.send(msg);
     console.log('Mail sent successfully');
   } catch (err: any) {
     tl.setResult(tl.TaskResult.Failed, err.message);
