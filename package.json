@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "build": "cd SU-SendGrid && npx tsc",
-    "run": "cd SU-SendGrid && node index.js",
     "create": "tfx extension create --manifest-globs vss-extension.json --rev-version"
   },
   "keywords": [],

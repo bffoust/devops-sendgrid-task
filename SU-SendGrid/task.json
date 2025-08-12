@@ -10,7 +10,7 @@
   "version": {
     "Major": 0,
     "Minor": 2,
-    "Patch": 13
+    "Patch": 14
   },
   "instanceNameFormat": "Stampinup SendGgrid",
   "groups": [
@@ -81,7 +81,7 @@
       "label": "Email Body text",
       "defaultValue": "",
       "required": false,
-      "helpMarkDown": "Path to the file containing the email body. This input is required if 'File' is selected for Email Body.",
+      "helpMarkDown": "Email body text. HTML tags are allowed. This input is required if 'Text' is selected for Email Body.",
       "visibleRule": "emailBody = Text",
       "groupName": "ConfigureEmail"
     },
