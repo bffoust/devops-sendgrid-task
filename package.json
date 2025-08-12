@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "cd SU-SendGrid && npx tsc",
-    "create": "tfx extension create --manifest-globs vss-extension.json --rev-version"
+    "create": "tfx extension create --manifest-globs vss-extension.json --rev-version",
+    "test": "cd SU-SendGrid && npx mocha tests/**/*.js"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +20,11 @@
     "@types/mocha": "^10.0.10",
     "@types/node": "^24.2.0",
     "@types/q": "^1.5.8",
+    "chai": "^4.3.7",
+    "@types/chai": "^4.3.5",
+    "mocha": "^10.2.0",
+    "sinon": "^15.2.0",
+    "@types/sinon": "^10.0.15",
     "sync-request": "^6.1.0",
     "typescript": "^5.9.2"
   }
