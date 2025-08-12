@@ -40,7 +40,7 @@ async function run() {
   try {
     const { SendGridAPIKey, senderEmailAddress, recipientEmailAddress, emailSubject, bodyText } = await getInputs();
     // Call the sendMail function
-    await sendMail(SendGridAPIKey, senderEmailAddress, recipientEmailAddress, emailSubject, bodyText);
+    await sendMail(SendGridAPIKey, senderEmailAddress, recipientEmailAddress.split(','), emailSubject, bodyText);
   } catch (err: any) {
     tl.setResult(tl.TaskResult.Failed, err.message);
   }

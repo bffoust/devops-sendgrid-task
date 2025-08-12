@@ -1,8 +1,6 @@
-import MailService = require("@sendgrid/mail/src/mail");
 import tl = require('azure-pipelines-task-lib/task');
 
-//export = MailService;
-export async function sendMail(SendGridAPIKey: string, senderEmailAddress: string, recipientEmailAddress: string, emailSubject: string, emailBodyText: string) {
+export async function sendMail(SendGridAPIKey: string, senderEmailAddress: string, recipientEmailAddress: string[], emailSubject: string, emailBodyText: string) {
   try {
     const sgMail = require('@sendgrid/mail');
     sgMail.setApiKey(SendGridAPIKey);
@@ -18,7 +16,7 @@ export async function sendMail(SendGridAPIKey: string, senderEmailAddress: strin
       html: emailBodyText
     };
 
-    await sgMail.send(msg);
+    await sgMail.sendMultiple(msg);
     console.log('Mail sent successfully');
   } catch (err: any) {
     tl.setResult(tl.TaskResult.Failed, err.message);
