@@ -8,11 +8,23 @@
   "category": "Utility",
   "author": "Bruce Foust",
   "version": {
-    "Major": 1,
-    "Minor": 0,
-    "Patch": 0
+    "Major": 0,
+    "Minor": 2,
+    "Patch": 11
   },
   "instanceNameFormat": "Echo $(samplestring)",
+  "groups": [
+    {
+      "name": "ConfigureSendGrid",
+      "displayName": "Configure SendGrid",
+      "isExpanded": true
+    },
+    {
+      "name": "ConfigureEmail",
+      "displayName": "Configure E-mail",
+      "isExpanded": true
+    }
+  ],
   "inputs": [
     {
       "name": "SendGridAPIKey",
@@ -20,7 +32,8 @@
       "label": "SendGgrid API Key",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "API Key given by SendGrid. You can generate an API Key from the SendGrid Portal"
+      "helpMarkDown": "API Key given by SendGrid. You can generate an API Key from the SendGrid Portal",
+      "groupName": "ConfigureSendGrid"
     },
     {
       "name": "senderEmailAddress",
@@ -28,7 +41,8 @@
       "label": "Sender Email Address",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "Email address of the sender. The value can either be only the Email Address (Eg. john@example.com) or the Name and the Email Address (Eg. John Smith john@example.com)"
+      "helpMarkDown": "Email address of the sender. The value can either be only the Email Address (Eg. john@example.com) or the Name and the Email Address (Eg. John Smith john@example.com)",
+      "groupName": "ConfigureEmail"
     },
     {
       "name": "recipientEmailAddress",
@@ -36,7 +50,8 @@
       "label": "Recipient Email Address",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "Email address(s) of the recipient(s). Use a comma (,) separated list if you have multiple email addresses. (Eg. john@example.com, bob@example.com). The email addresses can either be only the Email Address (Eg. john@example.com) or the Name and the Email Address (Eg. John Smith john@example.com)"
+      "helpMarkDown": "Email address(s) of the recipient(s). Use a comma (,) separated list if you have multiple email addresses. (Eg. john@example.com, bob@example.com). The email addresses can either be only the Email Address (Eg. john@example.com) or the Name and the Email Address (Eg. John Smith john@example.com)",
+      "groupName": "ConfigureEmail"
     },
     {
       "name": "emailSubject",
@@ -44,7 +59,8 @@
       "label": "Subject",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "Subject of the email."
+      "helpMarkDown": "Subject of the email.",
+      "groupName": "ConfigureEmail"
     },
     {
       "name": "emailBody",
@@ -56,7 +72,8 @@
       "options": {
         "text": "Text",
         "file": "File"
-      }
+      },
+      "groupName": "ConfigureEmail"
     },
     {
       "name": "emailBodyText",
@@ -65,7 +82,8 @@
       "defaultValue": "",
       "required": false,
       "helpMarkDown": "Path to the file containing the email body. This input is required if 'File' is selected for Email Body.",
-      "visibleRule": "emailBody = Text"
+      "visibleRule": "emailBody = Text",
+      "groupName": "ConfigureEmail"
     },
     {
       "name": "emailBodyFilePath",
@@ -74,7 +92,8 @@
       "defaultValue": "",
       "required": false,
       "helpMarkDown": "Path to the file containing the email body. This input is required if 'File' is selected for Email Body.",
-      "visibleRule": "emailBody = File"
+      "visibleRule": "emailBody = File",
+      "groupName": "ConfigureEmail"
     }
   ],
   "execution": {

@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "su-sendgrid",
   "name": "StampinUp SendGrid",
-  "version": "1.0.0",
+  "version": "0.2.11",
   "publisher": "BFoust",
   "targets": [
       {
@@ -13,6 +13,7 @@
   "categories": [
       "Azure Pipelines"
   ],
+  "tags": [ "email", "sendgrid", "email-service", "messaging" ],
   "icons": {
       "default": "images/TwilioSendGrid.png"
   },
