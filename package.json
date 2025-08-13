@@ -6,7 +6,7 @@
   "scripts": {
     "build": "cd SU-SendGrid && npx tsc",
     "create": "tfx extension create --manifest-globs vss-extension.json --rev-version",
-    "test": "cd SU-SendGrid && npx mocha tests/**/*.js"
+    "test": "cd SU-SendGrid && npx tsc && npx mocha tests/**/*.js"
   },
   "keywords": [],
   "author": "",
@@ -17,14 +17,15 @@
     "azure-pipelines-task-lib": "^5.2.1"
   },
   "devDependencies": {
+    "@babel/register": "^7.27.1",
+    "@types/chai": "^4.3.5",
     "@types/mocha": "^10.0.10",
     "@types/node": "^24.2.0",
     "@types/q": "^1.5.8",
-    "chai": "^4.3.7",
-    "@types/chai": "^4.3.5",
-    "mocha": "^10.2.0",
-    "sinon": "^15.2.0",
     "@types/sinon": "^10.0.15",
+    "chai": "^4.3.7",
+    "mocha": "^10.8.2",
+    "sinon": "^15.2.0",
     "sync-request": "^6.1.0",
     "typescript": "^5.9.2"
   }

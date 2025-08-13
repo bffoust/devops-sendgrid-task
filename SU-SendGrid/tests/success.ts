@@ -4,13 +4,34 @@ import * as sinon from 'sinon';
 import tmrm = require('azure-pipelines-task-lib/mock-run');
 import path = require('path');
 
+// Suppress "Replacing existing mock" warning from mock-run
+const originalWarn = console.warn;
+console.warn = function (...args: any[]) {
+    if (
+        typeof args[0] === 'string' &&
+        (
+            args[0].includes('Replacing existing mock for module: azure-pipelines-task-lib/task') ||
+            args[0].includes('Replacing existing mock for module: @sendgrid/mail')
+        )
+    ) {
+        return;
+    }
+    originalWarn.apply(console, args);
+};
+
 describe('SendGrid Mail Task - Success Tests', () => {
     let tmr: tmrm.TaskMockRunner;
     let taskPath: string;
+    let setResultStub: sinon.SinonStub;
 
     beforeEach(() => {
         taskPath = path.join(__dirname, '..', 'index.js');
         tmr = new tmrm.TaskMockRunner(taskPath);
+        setResultStub = sinon.stub();
+        tmr.registerMock('azure-pipelines-task-lib/task', {
+            setResult: setResultStub,
+            TaskResult: { Succeeded: 0, Failed: 1 }
+        });
     });
 
     afterEach(() => {
@@ -31,13 +52,6 @@ describe('SendGrid Mail Task - Success Tests', () => {
             sendMultiple: sinon.stub().resolves()
         });
 
-        // Mock task completion
-        const setResultStub = sinon.stub();
-        tmr.registerMock('azure-pipelines-task-lib/task', {
-            setResult: setResultStub,
-            TaskResult: { Succeeded: 0, Failed: 1 }
-        });
-
         tmr.run();
 
         // Verify task completed successfully
@@ -56,12 +70,6 @@ describe('SendGrid Mail Task - Success Tests', () => {
             sendMultiple: sinon.stub().resolves()
         });
 
-        const setResultStub = sinon.stub();
-        tmr.registerMock('azure-pipelines-task-lib/task', {
-            setResult: setResultStub,
-            TaskResult: { Succeeded: 0, Failed: 1 }
-        });
-
         tmr.run();
 
         expect(setResultStub.called).to.be.false;
@@ -77,12 +85,6 @@ describe('SendGrid Mail Task - Success Tests', () => {
         tmr.registerMock('@sendgrid/mail', {
             setApiKey: sinon.stub(),
             sendMultiple: sinon.stub().resolves()
-        });
-
-        const setResultStub = sinon.stub();
-        tmr.registerMock('azure-pipelines-task-lib/task', {
-            setResult: setResultStub,
-            TaskResult: { Succeeded: 0, Failed: 1 }
         });
 
         tmr.run();

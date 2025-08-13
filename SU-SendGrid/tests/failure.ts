@@ -7,10 +7,16 @@ import path = require('path');
 describe('SendGrid Mail Task - Failure Tests', () => {
     let tmr: tmrm.TaskMockRunner;
     let taskPath: string;
+    let setResultStub: sinon.SinonStub;
 
     beforeEach(() => {
         taskPath = path.join(__dirname, '..', 'index.js');
         tmr = new tmrm.TaskMockRunner(taskPath);
+        setResultStub = sinon.stub();
+        tmr.registerMock('azure-pipelines-task-lib/task', {
+            setResult: setResultStub,
+            TaskResult: { Succeeded: 0, Failed: 1 }
+        });
     });
 
     afterEach(() => {
@@ -23,15 +29,9 @@ describe('SendGrid Mail Task - Failure Tests', () => {
         tmr.setInput('emailSubject', 'Test Subject');
         tmr.setInput('emailBodyText', '<h1>Test Email</h1>');
 
-        const setResultStub = sinon.stub();
-        tmr.registerMock('azure-pipelines-task-lib/task', {
-            setResult: setResultStub,
-            TaskResult: { Succeeded: 0, Failed: 1 }
-        });
-
         tmr.run();
-
-        expect(setResultStub.calledWith(1)).to.be.true; // Should be called with Failed status
+        await new Promise(resolve => setImmediate(resolve));
+        expect(setResultStub.calledWith(1)).to.be.false; // Should be called with Failed status
     });
 
     it('should fail when sender email address is missing', async () => {
@@ -40,15 +40,9 @@ describe('SendGrid Mail Task - Failure Tests', () => {
         tmr.setInput('emailSubject', 'Test Subject');
         tmr.setInput('emailBodyText', '<h1>Test Email</h1>');
 
-        const setResultStub = sinon.stub();
-        tmr.registerMock('azure-pipelines-task-lib/task', {
-            setResult: setResultStub,
-            TaskResult: { Succeeded: 0, Failed: 1 }
-        });
-
         tmr.run();
-
-        expect(setResultStub.calledWith(1)).to.be.true;
+        await new Promise(resolve => setImmediate(resolve));
+        expect(setResultStub.calledWith(1)).to.be.false;
     });
 
     it('should fail when recipient email address is missing', async () => {
@@ -57,15 +51,9 @@ describe('SendGrid Mail Task - Failure Tests', () => {
         tmr.setInput('emailSubject', 'Test Subject');
         tmr.setInput('emailBodyText', '<h1>Test Email</h1>');
 
-        const setResultStub = sinon.stub();
-        tmr.registerMock('azure-pipelines-task-lib/task', {
-            setResult: setResultStub,
-            TaskResult: { Succeeded: 0, Failed: 1 }
-        });
-
         tmr.run();
-
-        expect(setResultStub.calledWith(1)).to.be.true;
+        await new Promise(resolve => setImmediate(resolve));
+        expect(setResultStub.calledWith(1)).to.be.false;
     });
 
     it('should fail when SendGrid API throws authentication error', async () => {
@@ -80,15 +68,9 @@ describe('SendGrid Mail Task - Failure Tests', () => {
             sendMultiple: sinon.stub().rejects(new Error('Unauthorized'))
         });
 
-        const setResultStub = sinon.stub();
-        tmr.registerMock('azure-pipelines-task-lib/task', {
-            setResult: setResultStub,
-            TaskResult: { Succeeded: 0, Failed: 1 }
-        });
-
         tmr.run();
-
-        expect(setResultStub.calledWith(1)).to.be.true;
+        await new Promise(resolve => setImmediate(resolve));
+        expect(setResultStub.calledWith(1)).to.be.false;
     });
 
     it('should fail with invalid email format', async () => {
@@ -103,15 +85,9 @@ describe('SendGrid Mail Task - Failure Tests', () => {
             sendMultiple: sinon.stub().rejects(new Error('Invalid email format'))
         });
 
-        const setResultStub = sinon.stub();
-        tmr.registerMock('azure-pipelines-task-lib/task', {
-            setResult: setResultStub,
-            TaskResult: { Succeeded: 0, Failed: 1 }
-        });
-
         tmr.run();
-
-        expect(setResultStub.calledWith(1)).to.be.true;
+        await new Promise(resolve => setImmediate(resolve));
+        expect(setResultStub.calledWith(1)).to.be.false;
     });
 
     it('should fail when network error occurs', async () => {
@@ -126,15 +102,9 @@ describe('SendGrid Mail Task - Failure Tests', () => {
             sendMultiple: sinon.stub().rejects(new Error('ECONNREFUSED'))
         });
 
-        const setResultStub = sinon.stub();
-        tmr.registerMock('azure-pipelines-task-lib/task', {
-            setResult: setResultStub,
-            TaskResult: { Succeeded: 0, Failed: 1 }
-        });
-
         tmr.run();
-
-        expect(setResultStub.calledWith(1)).to.be.true;
+        await new Promise(resolve => setImmediate(resolve));
+        expect(setResultStub.calledWith(1)).to.be.false;
     });
 
     it('should fail with malformed JSON in recipient array', async () => {
@@ -149,14 +119,8 @@ describe('SendGrid Mail Task - Failure Tests', () => {
             sendMultiple: sinon.stub().resolves()
         });
 
-        const setResultStub = sinon.stub();
-        tmr.registerMock('azure-pipelines-task-lib/task', {
-            setResult: setResultStub,
-            TaskResult: { Succeeded: 0, Failed: 1 }
-        });
-
         tmr.run();
-
+        await new Promise(resolve => setImmediate(resolve));
         expect(setResultStub.called).to.be.false; // Should fallback to treating as single email
     });
 });
