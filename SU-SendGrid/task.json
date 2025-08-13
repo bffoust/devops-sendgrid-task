@@ -50,7 +50,7 @@
       "label": "Sender Email Address",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "Email address of the sender. The value can either be only the Email Address (Eg. alex.johnson@example.com) or the Name and the Email Address (Eg. Alex Johnson <alex.johnson@example.com>)",
+      "helpMarkDown": "Email address of the sender. The value can either be only the Email Address (Eg. alex.johnson@example.com)",
       "groupName": "ConfigureEmail"
     },
     {
@@ -59,7 +59,7 @@
       "label": "Recipient Email Address",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "Email address(s) of the recipient(s). Use a comma (,) separated list if you have multiple email addresses. (Eg. alex.johnson@example.com, jamie.lee@example.com)",
+      "helpMarkDown": "Email address(s) of the recipient(s). Use a comma (,) separated list if you have multiple email addresses. (Eg. alex.johnson@example.com, jamie.lee@example.com) or the Name and the Email Address (Eg. Alex Johnson <alex.johnson@example.com>, Jamie Lee <jamie.lee@example.com>)",
       "groupName": "ConfigureEmail"
     },
     {
@@ -68,7 +68,7 @@
       "label": "CC Email Address",
       "defaultValue": "",
       "required": false,
-      "helpMarkDown": "Email address(s) of the cc recipient(s). Use a comma (,) separated list if you have multiple email addresses. (Eg. alex.johnson@example.com, jamie.lee@example.com)",
+      "helpMarkDown": "Email address(s) of the cc recipient(s). Use a comma (,) separated list if you have multiple email addresses. (Eg. alex.johnson@example.com, jamie.lee@example.com) or the Name and the Email Address (Eg. Alex Johnson <alex.johnson@example.com>, Jamie Lee <jamie.lee@example.com>)",
       "groupName": "ConfigureCopyEmail"
     },
     {
@@ -77,7 +77,7 @@
       "label": "BCC Email Address",
       "defaultValue": "",
       "required": false,
-      "helpMarkDown": "Email address(s) of the bcc recipient(s). Use a comma (,) separated list if you have multiple email addresses. (Eg. alex.johnson@example.com, jamie.lee@example.com)",
+      "helpMarkDown": "Email address(s) of the bcc recipient(s). Use a comma (,) separated list if you have multiple email addresses. (Eg. alex.johnson@example.com, jamie.lee@example.com) or the Name and the Email Address (Eg. Alex Johnson <alex.johnson@example.com>, Jamie Lee <jamie.lee@example.com>)",
       "groupName": "ConfigureCopyEmail"
     },
     {
