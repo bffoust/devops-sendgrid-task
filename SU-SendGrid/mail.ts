@@ -11,14 +11,16 @@ export async function sendMail(SendGridAPIKey: string, senderEmailAddress: strin
     console.log('bcc mail to:', bccEmailAddress);
     console.log('mail subject:', emailSubject);
 
-    // No text field used, using html to allow html text instead.
+    // Determine if emailBodyText is HTML or plain text
+    const isHtml = /<\/?[a-z][\s\S]*>/i.test(emailBodyText);
+
     const msg = {
       to: recipientEmailAddress,
       cc: ccEmailAddress,
       bcc: bccEmailAddress,
       from: senderEmailAddress,
       subject: emailSubject,
-      html: emailBodyText
+      ...(isHtml ? { html: emailBodyText } : { text: emailBodyText })
     };
 
     await sgMail.sendMultiple(msg);
