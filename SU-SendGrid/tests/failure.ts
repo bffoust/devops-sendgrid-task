@@ -26,6 +26,8 @@ describe('SendGrid Mail Task - Failure Tests', () => {
     it('should fail when SendGrid API key is missing', async () => {
         tmr.setInput('senderEmailAddress', 'sender@example.com');
         tmr.setInput('recipientEmailAddress', 'recipient@example.com');
+        tmr.setInput('ccEmailAddress', 'cc@example.com');
+        tmr.setInput('bccEmailAddress', 'bcc@example.com');
         tmr.setInput('emailSubject', 'Test Subject');
         tmr.setInput('emailBodyText', '<h1>Test Email</h1>');
 
@@ -37,6 +39,8 @@ describe('SendGrid Mail Task - Failure Tests', () => {
     it('should fail when sender email address is missing', async () => {
         tmr.setInput('SendGridAPIKey', 'SG.test_api_key');
         tmr.setInput('recipientEmailAddress', 'recipient@example.com');
+        tmr.setInput('ccEmailAddress', 'cc@example.com');
+        tmr.setInput('bccEmailAddress', 'bcc@example.com');
         tmr.setInput('emailSubject', 'Test Subject');
         tmr.setInput('emailBodyText', '<h1>Test Email</h1>');
 
@@ -45,7 +49,7 @@ describe('SendGrid Mail Task - Failure Tests', () => {
         expect(setResultStub.calledWith(1)).to.be.false;
     });
 
-    it('should fail when recipient email address is missing', async () => {
+    it('should fail when recipient all email addresses are missing', async () => {
         tmr.setInput('SendGridAPIKey', 'SG.test_api_key');
         tmr.setInput('senderEmailAddress', 'sender@example.com');
         tmr.setInput('emailSubject', 'Test Subject');
@@ -60,6 +64,8 @@ describe('SendGrid Mail Task - Failure Tests', () => {
         tmr.setInput('SendGridAPIKey', 'SG.invalid_api_key');
         tmr.setInput('senderEmailAddress', 'sender@example.com');
         tmr.setInput('recipientEmailAddress', 'recipient@example.com');
+        tmr.setInput('ccEmailAddress', 'cc@example.com');
+        tmr.setInput('bccEmailAddress', 'bcc@example.com');
         tmr.setInput('emailSubject', 'Test Subject');
         tmr.setInput('emailBodyText', '<h1>Test Email</h1>');
 
@@ -77,6 +83,8 @@ describe('SendGrid Mail Task - Failure Tests', () => {
         tmr.setInput('SendGridAPIKey', 'SG.test_api_key');
         tmr.setInput('senderEmailAddress', 'invalid-email');
         tmr.setInput('recipientEmailAddress', 'also-invalid-email');
+        tmr.setInput('ccEmailAddress', 'cc-also-invalid-email');
+        tmr.setInput('bccEmailAddress', 'bcc-also-invalid-email');
         tmr.setInput('emailSubject', 'Test Subject');
         tmr.setInput('emailBodyText', '<h1>Test Email</h1>');
 
@@ -94,6 +102,8 @@ describe('SendGrid Mail Task - Failure Tests', () => {
         tmr.setInput('SendGridAPIKey', 'SG.test_api_key');
         tmr.setInput('senderEmailAddress', 'sender@example.com');
         tmr.setInput('recipientEmailAddress', 'recipient@example.com');
+        tmr.setInput('ccEmailAddress', 'cc@example.com');
+        tmr.setInput('bccEmailAddress', 'bcc@example.com');
         tmr.setInput('emailSubject', 'Test Subject');
         tmr.setInput('emailBodyText', '<h1>Test Email</h1>');
 
@@ -111,6 +121,8 @@ describe('SendGrid Mail Task - Failure Tests', () => {
         tmr.setInput('SendGridAPIKey', 'SG.test_api_key');
         tmr.setInput('senderEmailAddress', 'sender@example.com');
         tmr.setInput('recipientEmailAddress', '["invalid@json"');
+        tmr.setInput('ccEmailAddress', 'invalid@json');
+        tmr.setInput('bccEmailAddress', 'invalid@json');
         tmr.setInput('emailSubject', 'Test Subject');
         tmr.setInput('emailBodyText', '<h1>Test Email</h1>');
 

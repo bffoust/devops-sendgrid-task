@@ -1,8 +1,8 @@
 {
   "manifestVersion": 1,
   "id": "su-sendgrid",
-  "name": "StampinUp SendGrid",
-  "version": "0.2.14",
+  "name": "SendGrid E-Mail",
+  "version": "0.2.19",
   "publisher": "BFoust",
   "targets": [
       {

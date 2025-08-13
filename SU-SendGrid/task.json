@@ -2,17 +2,21 @@
   "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
   "id": "1d03e40f-ba2b-48ca-b560-33ddc53caa01",
   "name": "su-sendgrid",
-  "friendlyName": "Stampinup SendGgrid",
-  "description": "StampinUp SendGrid Azure DevOps Extension",
+  "friendlyName": "SendGrid E-Mail",
+  "description": "SendGrid Azure DevOps Extension",
+  "author": "Bruce Foust",
   "helpMarkDown": "",
   "category": "Utility",
-  "author": "Bruce Foust",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
   "version": {
     "Major": 0,
     "Minor": 2,
-    "Patch": 14
+    "Patch": 19
   },
-  "instanceNameFormat": "Stampinup SendGgrid",
+  "instanceNameFormat": "SendGrid E-Mail",
   "groups": [
     {
       "name": "ConfigureSendGrid",
@@ -23,6 +27,11 @@
       "name": "ConfigureEmail",
       "displayName": "Configure E-mail",
       "isExpanded": true
+    },
+    {
+      "name": "ConfigureCopyEmail",
+      "displayName": "Configure CC or BCC addresses",
+      "isExpanded": false
     }
   ],
   "inputs": [
@@ -32,7 +41,7 @@
       "label": "SendGgrid API Key",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "API Key given by SendGrid. You can generate an API Key from the SendGrid Portal",
+      "helpMarkDown": "Generate your API Key from the SendGrid Portal",
       "groupName": "ConfigureSendGrid"
     },
     {
@@ -50,8 +59,26 @@
       "label": "Recipient Email Address",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "Email address(s) of the recipient(s). Use a comma (,) separated list if you have multiple email addresses. (Eg. john@example.com, bob@example.com). The email addresses can either be only the Email Address (Eg. john@example.com) or the Name and the Email Address (Eg. John Smith john@example.com)",
+      "helpMarkDown": "Email address(s) of the recipient(s). Use a comma (,) separated list if you have multiple email addresses. (Eg. username@example.com, bob@example.com)",
       "groupName": "ConfigureEmail"
+    },
+    {
+      "name": "ccEmailAddress",
+      "type": "string",
+      "label": "CC Email Address",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Email address(s) of the cc recipient(s). Use a comma (,) separated list if you have multiple email addresses. (Eg. username@example.com, bob@example.com)",
+      "groupName": "ConfigureCopyEmail"
+    },
+    {
+      "name": "bccEmailAddress",
+      "type": "string",
+      "label": "BCC Email Address",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Email address(s) of the bcc recipient(s). Use a comma (,) separated list if you have multiple email addresses. (Eg. username@example.com, bob@example.com)",
+      "groupName": "ConfigureCopyEmail"
     },
     {
       "name": "emailSubject",

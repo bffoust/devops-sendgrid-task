@@ -6,6 +6,7 @@
   "scripts": {
     "build": "cd SU-SendGrid && npx tsc",
     "create": "tfx extension create --manifest-globs vss-extension.json --rev-version",
+    "copy": "cd SU-SendGrid && npx tsc && cp -R dist/* ../dist/",
     "test": "cd SU-SendGrid && npx tsc && npx mocha tests/**/*.js"
   },
   "keywords": [],

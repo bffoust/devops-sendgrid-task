@@ -43,6 +43,8 @@ describe('SendGrid Mail Task - Success Tests', () => {
         tmr.setInput('SendGridAPIKey', 'SG.test_api_key');
         tmr.setInput('senderEmailAddress', 'sender@example.com');
         tmr.setInput('recipientEmailAddress', 'recipient@example.com');
+        tmr.setInput('ccEmailAddress', 'cc@example.com');
+        tmr.setInput('bccEmailAddress', 'bcc@example.com');
         tmr.setInput('emailSubject', 'Test Subject');
         tmr.setInput('emailBodyText', '<h1>Test Email</h1>');
 
@@ -62,6 +64,8 @@ describe('SendGrid Mail Task - Success Tests', () => {
         tmr.setInput('SendGridAPIKey', 'SG.test_api_key');
         tmr.setInput('senderEmailAddress', 'sender@example.com');
         tmr.setInput('recipientEmailAddress', '["recipient1@example.com", "recipient2@example.com"]');
+        tmr.setInput('ccEmailAddress', '["recipient1@example.com", "recipient2@example.com"]');
+        tmr.setInput('bccEmailAddress', '["recipient1@example.com", "recipient2@example.com"]');
         tmr.setInput('emailSubject', 'Test Subject');
         tmr.setInput('emailBodyText', '<h1>Test Email</h1>');
 
@@ -79,6 +83,8 @@ describe('SendGrid Mail Task - Success Tests', () => {
         tmr.setInput('SendGridAPIKey', 'SG.test_api_key');
         tmr.setInput('senderEmailAddress', 'sender@example.com');
         tmr.setInput('recipientEmailAddress', 'recipient@example.com');
+        tmr.setInput('ccEmailAddress', 'cc@example.com');
+        tmr.setInput('bccEmailAddress', 'bcc@example.com');
         tmr.setInput('emailSubject', 'Test Subject');
         tmr.setInput('emailBodyText', '');
 
