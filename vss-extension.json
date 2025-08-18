@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "su-sendgrid",
   "name": "SendGrid E-Mail",
-  "version": "0.2.22",
+  "version": "0.2.25",
   "publisher": "BFoust",
   "targets": [
       {
