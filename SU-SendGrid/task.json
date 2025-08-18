@@ -14,7 +14,7 @@
   "version": {
     "Major": 0,
     "Minor": 2,
-    "Patch": 25
+    "Patch": 26
   },
   "instanceNameFormat": "SendGrid E-Mail",
   "groups": [
@@ -56,7 +56,7 @@
     {
       "name": "recipientEmailAddress",
       "type": "string",
-      "label": "Recipient Email Address",
+      "label": "Recipient Email Address(s)",
       "defaultValue": "",
       "required": true,
       "helpMarkDown": "Email address(s) of the recipient(s). Use a comma (,) separated list if you have multiple email addresses. (Eg. alex.johnson@example.com, jamie.lee@example.com) or the Name and the Email Address (Eg. Alex Johnson <alex.johnson@example.com>, Jamie Lee <jamie.lee@example.com>)",
@@ -120,6 +120,15 @@
       "required": false,
       "helpMarkDown": "Path to the file containing the email body. This input is required if 'File' is selected for Email Body.",
       "visibleRule": "emailBody = File",
+      "groupName": "ConfigureEmail"
+    },
+    {
+      "name": "sendAsHTML",
+      "type": "boolean",
+      "label": "Send as HTML",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Send the contents of the email body as HTML.",
       "groupName": "ConfigureEmail"
     }
   ],

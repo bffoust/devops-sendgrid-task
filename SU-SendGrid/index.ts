@@ -13,6 +13,7 @@ export async function getInputs() {
     const emailBody: string | undefined = tl.getInput('emailBody', true);
     const emailBodyText: string | undefined = tl.getInput('emailBodyText', false);
     const emailBodyFilePath: string | undefined = tl.getInput('emailBodyFilePath', false);
+    const sendAsHTML: boolean = tl.getBoolInput('sendAsHTML', true);
     let bodyText = '';
 
     if (!SendGridAPIKey || !senderEmailAddress || !recipientEmailAddress || !emailSubject || !emailBody) {
@@ -31,7 +32,7 @@ export async function getInputs() {
       throw new Error('Email body is required but not provided.');
     }
 
-    return { SendGridAPIKey, senderEmailAddress, recipientEmailAddress, ccEmailAddress, bccEmailAddress, emailSubject, normalizedEmailBody, bodyText };
+    return { SendGridAPIKey, senderEmailAddress, recipientEmailAddress, ccEmailAddress, bccEmailAddress, emailSubject, normalizedEmailBody, sendAsHTML };
   } catch (err: any) {
     tl.setResult(tl.TaskResult.Failed, err.message);
     throw err;
@@ -40,13 +41,13 @@ export async function getInputs() {
 
 async function run() {
   try {
-    const { SendGridAPIKey, senderEmailAddress, recipientEmailAddress, ccEmailAddress, bccEmailAddress, emailSubject, normalizedEmailBody, bodyText } = await getInputs();
+    const { SendGridAPIKey, senderEmailAddress, recipientEmailAddress, ccEmailAddress, bccEmailAddress, emailSubject, normalizedEmailBody, sendAsHTML } = await getInputs();
     // Ensure arrays are not undefined
     const recipientArray = recipientEmailAddress.split(',');
     const ccArray = ccEmailAddress ? ccEmailAddress.split(',') : [];
     const bccArray = bccEmailAddress ? bccEmailAddress.split(',') : [];
     // Call the sendMail function
-    await sendMail(SendGridAPIKey, senderEmailAddress, recipientArray, ccArray, bccArray, emailSubject, normalizedEmailBody, bodyText);
+    await sendMail(SendGridAPIKey, senderEmailAddress, recipientArray, ccArray, bccArray, emailSubject, normalizedEmailBody, sendAsHTML);
   } catch (err: any) {
     tl.setResult(tl.TaskResult.Failed, err.message);
   }

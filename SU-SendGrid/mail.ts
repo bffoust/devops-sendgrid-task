@@ -1,6 +1,6 @@
 import tl = require('azure-pipelines-task-lib/task');
 
-export async function sendMail(SendGridAPIKey: string, senderEmailAddress: string, recipientEmailAddress: string[], ccEmailAddress:string[], bccEmailAddress: string[], emailSubject: string, emailBody: string, emailBodyText: string) {
+export async function sendMail(SendGridAPIKey: string, senderEmailAddress: string, recipientEmailAddress: string[], ccEmailAddress:string[], bccEmailAddress: string[], emailSubject: string, emailBodyText: string, sendAsHTML: Boolean) {
   try {
     const sgMail = require('@sendgrid/mail');
     sgMail.setApiKey(SendGridAPIKey);
@@ -10,10 +10,6 @@ export async function sendMail(SendGridAPIKey: string, senderEmailAddress: strin
     console.log('cc mail to:', ccEmailAddress);
     console.log('bcc mail to:', bccEmailAddress);
     console.log('mail subject:', emailSubject);
-    console.log('mail type:', emailBody);
-
-    // Determine if emailBody equals "html" or "text"
-    const isHtml = emailBody === "file";
 
     const msg = {
       to: recipientEmailAddress,
@@ -21,7 +17,7 @@ export async function sendMail(SendGridAPIKey: string, senderEmailAddress: strin
       bcc: bccEmailAddress,
       from: senderEmailAddress,
       subject: emailSubject,
-      ...(isHtml ? { html: emailBodyText } : { text: emailBodyText })
+      ...(sendAsHTML ? { html: emailBodyText } : { text: emailBodyText })
     };
 
     await sgMail.sendMultiple(msg);
