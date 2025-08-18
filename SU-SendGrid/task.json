@@ -14,7 +14,7 @@
   "version": {
     "Major": 0,
     "Minor": 2,
-    "Patch": 20
+    "Patch": 22
   },
   "instanceNameFormat": "SendGrid E-Mail",
   "groups": [
