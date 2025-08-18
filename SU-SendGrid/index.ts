@@ -13,7 +13,7 @@ export async function getInputs() {
     const emailBody: string | undefined = tl.getInput('emailBody', true);
     const emailBodyText: string | undefined = tl.getInput('emailBodyText', false);
     const emailBodyFilePath: string | undefined = tl.getInput('emailBodyFilePath', false);
-    const sendAsHTML: boolean = tl.getBoolInput('sendAsHTML', true);
+    const sendAsHTML: boolean | true = tl.getBoolInput('sendAsHTML');
     let bodyText = '';
 
     if (!SendGridAPIKey || !senderEmailAddress || !recipientEmailAddress || !emailSubject || !emailBody) {

@@ -14,7 +14,7 @@
   "version": {
     "Major": 0,
     "Minor": 2,
-    "Patch": 26
+    "Patch": 27
   },
   "instanceNameFormat": "SendGrid E-Mail",
   "groups": [
@@ -126,10 +126,9 @@
       "name": "sendAsHTML",
       "type": "boolean",
       "label": "Send as HTML",
-      "defaultValue": "",
+      "defaultValue": true,
       "required": false,
-      "helpMarkDown": "Send the contents of the email body as HTML.",
-      "groupName": "ConfigureEmail"
+      "helpMarkDown": "Check to send the email as HTML."
     }
   ],
   "execution": {
