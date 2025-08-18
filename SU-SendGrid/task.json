@@ -14,7 +14,7 @@
   "version": {
     "Major": 0,
     "Minor": 2,
-    "Patch": 27
+    "Patch": 33
   },
   "instanceNameFormat": "SendGrid E-Mail",
   "groups": [
@@ -104,7 +104,7 @@
     },
     {
       "name": "emailBodyText",
-      "type": "string",
+      "type": "multiLine",
       "label": "Email Body text",
       "defaultValue": "SendGrid Email from Azure DevOps Pipeline",
       "required": false,
@@ -128,7 +128,8 @@
       "label": "Send as HTML",
       "defaultValue": true,
       "required": false,
-      "helpMarkDown": "Check to send the email as HTML."
+      "helpMarkDown": "Check to send the email as HTML.",
+      "groupName": "ConfigureEmail"
     }
   ],
   "execution": {

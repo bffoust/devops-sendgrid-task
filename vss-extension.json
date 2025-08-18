@@ -2,18 +2,50 @@
   "manifestVersion": 1,
   "id": "su-sendgrid",
   "name": "SendGrid E-Mail",
-  "version": "0.2.27",
+  "version": "0.2.33",
   "publisher": "BFoust",
   "targets": [
       {
           "id": "Microsoft.VisualStudio.Services"
       }
   ],
-  "description": "StampinUp SendGrid Azure DevOps Extension",
+  "description": "SendGrid Azure DevOps Extension",
   "categories": [
       "Azure Pipelines"
   ],
   "tags": [ "email", "sendgrid", "email-service", "messaging" ],
+  "content": {
+      "details": {
+          "path": "overview.md"
+      },
+      "license": {
+          "path": "LICENSE.md"
+      }
+  },
+  "links": {
+      "home": {
+          "uri": "https://github.com/bffoust/devops-sendgrid-task"
+      },
+      "getstarted": {
+          "uri": "https://github.com/bffoust/devops-sendgrid-task/blob/rc/README.md"
+      },
+      "learn": {
+          "uri": "https://github.com/bffoust/devops-sendgrid-task/blob/rc/README.md"
+      },
+      "support": {
+          "uri": "https://github.com/bffoust/devops-sendgrid-task/blob/rc/README.md"
+      },
+      "repository": {
+          "uri": "https://github.com/bffoust/devops-sendgrid-task"
+      },
+      "issues": {
+          "uri": "https://github.com/bffoust/devops-sendgrid-task"
+      }
+  },
+  "repository": {
+      "type": "git",
+      "uri": "https://github.com/bffoust/devops-sendgrid-task"
+  },
   "icons": {
       "default": "images/TwilioSendGrid.png"
   },

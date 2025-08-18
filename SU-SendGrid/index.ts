@@ -32,7 +32,7 @@ export async function getInputs() {
       throw new Error('Email body is required but not provided.');
     }
 
-    return { SendGridAPIKey, senderEmailAddress, recipientEmailAddress, ccEmailAddress, bccEmailAddress, emailSubject, normalizedEmailBody, sendAsHTML };
+    return { SendGridAPIKey, senderEmailAddress, recipientEmailAddress, ccEmailAddress, bccEmailAddress, emailSubject, bodyText, sendAsHTML };
   } catch (err: any) {
     tl.setResult(tl.TaskResult.Failed, err.message);
     throw err;
@@ -41,13 +41,13 @@ export async function getInputs() {
 
 async function run() {
   try {
-    const { SendGridAPIKey, senderEmailAddress, recipientEmailAddress, ccEmailAddress, bccEmailAddress, emailSubject, normalizedEmailBody, sendAsHTML } = await getInputs();
+    const { SendGridAPIKey, senderEmailAddress, recipientEmailAddress, ccEmailAddress, bccEmailAddress, emailSubject, bodyText, sendAsHTML } = await getInputs();
     // Ensure arrays are not undefined
     const recipientArray = recipientEmailAddress.split(',');
     const ccArray = ccEmailAddress ? ccEmailAddress.split(',') : [];
     const bccArray = bccEmailAddress ? bccEmailAddress.split(',') : [];
     // Call the sendMail function
-    await sendMail(SendGridAPIKey, senderEmailAddress, recipientArray, ccArray, bccArray, emailSubject, normalizedEmailBody, sendAsHTML);
+    await sendMail(SendGridAPIKey, senderEmailAddress, recipientArray, ccArray, bccArray, emailSubject, bodyText, sendAsHTML);
   } catch (err: any) {
     tl.setResult(tl.TaskResult.Failed, err.message);
   }
