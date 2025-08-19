@@ -14,10 +14,11 @@ node_modules/
 # Optional npm cache directory
 .npm
 
-*.js
-*.vsix
-
 # DevOps task key
 .taskkey
 
+# distribution files and folders
+*.js
+*.js.map
+*.vsix
 dist/
