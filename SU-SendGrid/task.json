@@ -14,7 +14,7 @@
   "version": {
     "Major": 0,
     "Minor": 2,
-    "Patch": 34
+    "Patch": 35
   },
   "instanceNameFormat": "SendGrid E-Mail",
   "groups": [
@@ -47,37 +47,37 @@
     {
       "name": "senderEmailAddress",
       "type": "string",
-      "label": "Sender Email Address",
+      "label": "Sender E-mail Address",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "Email address of the sender. The value can either be only the Email Address (Eg. alex.johnson@example.com)",
+      "helpMarkDown": "E-mail address of the sender. The value can either be only the E-mail Address (Eg. alex.johnson@example.com)",
       "groupName": "ConfigureEmail"
     },
     {
       "name": "recipientEmailAddress",
       "type": "string",
-      "label": "Recipient Email Address(s)",
+      "label": "Recipient E-mail Address(s)",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "Email address(s) of the recipient(s). Use a comma (,) separated list if you have multiple email addresses. (Eg. alex.johnson@example.com, jamie.lee@example.com) or the Name and the Email Address (Eg. Alex Johnson <alex.johnson@example.com>, Jamie Lee <jamie.lee@example.com>)",
+      "helpMarkDown": "E-mail address(s) of the recipient(s). Use a comma (,) separated list if you have multiple e-mail addresses. (Eg. alex.johnson@example.com, jamie.lee@example.com) or the Name and the E-mail Address (Eg. Alex Johnson <alex.johnson@example.com>, Jamie Lee <jamie.lee@example.com>)",
       "groupName": "ConfigureEmail"
     },
     {
       "name": "ccEmailAddress",
       "type": "string",
-      "label": "CC Email Address",
+      "label": "CC E-mail Address",
       "defaultValue": "",
       "required": false,
-      "helpMarkDown": "Email address(s) of the cc recipient(s). Use a comma (,) separated list if you have multiple email addresses. (Eg. alex.johnson@example.com, jamie.lee@example.com) or the Name and the Email Address (Eg. Alex Johnson <alex.johnson@example.com>, Jamie Lee <jamie.lee@example.com>)",
+      "helpMarkDown": "E-mail address(s) of the cc recipient(s). Use a comma (,) separated list if you have multiple e-mail addresses. (Eg. alex.johnson@example.com, jamie.lee@example.com) or the Name and the E-mail Address (Eg. Alex Johnson <alex.johnson@example.com>, Jamie Lee <jamie.lee@example.com>)",
       "groupName": "ConfigureCopyEmail"
     },
     {
       "name": "bccEmailAddress",
       "type": "string",
-      "label": "BCC Email Address",
+      "label": "BCC E-mail Address",
       "defaultValue": "",
       "required": false,
-      "helpMarkDown": "Email address(s) of the bcc recipient(s). Use a comma (,) separated list if you have multiple email addresses. (Eg. alex.johnson@example.com, jamie.lee@example.com) or the Name and the Email Address (Eg. Alex Johnson <alex.johnson@example.com>, Jamie Lee <jamie.lee@example.com>)",
+      "helpMarkDown": "E-mail address(s) of the bcc recipient(s). Use a comma (,) separated list if you have multiple e-mail addresses. (Eg. alex.johnson@example.com, jamie.lee@example.com) or the Name and the E-mail Address (Eg. Alex Johnson <alex.johnson@example.com>, Jamie Lee <jamie.lee@example.com>)",
       "groupName": "ConfigureCopyEmail"
     },
     {
@@ -86,16 +86,16 @@
       "label": "Subject",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "Subject of the email.",
+      "helpMarkDown": "Subject of the e-mail.",
       "groupName": "ConfigureEmail"
     },
     {
       "name": "emailBody",
       "type": "pickList",
-      "label": "Email Body",
+      "label": "E-mail Body",
       "defaultValue": "Text",
       "required": true,
-      "helpMarkDown": "Body of the email.",
+      "helpMarkDown": "Body of the e-mail.",
       "options": {
         "text": "Text",
         "file": "File"
@@ -105,20 +105,20 @@
     {
       "name": "emailBodyText",
       "type": "multiLine",
-      "label": "Email Body text",
-      "defaultValue": "SendGrid Email from Azure DevOps Pipeline",
+      "label": "E-mail Body text",
+      "defaultValue": "SendGrid E-mail from Azure DevOps Pipeline",
       "required": false,
-      "helpMarkDown": "Email body text. HTML tags are allowed. This input is required if 'Text' is selected for Email Body.",
+      "helpMarkDown": "E-mail body text. HTML tags are allowed. This input is required if 'Text' is selected for E-mail Body.",
       "visibleRule": "emailBody = Text",
       "groupName": "ConfigureEmail"
     },
     {
       "name": "emailBodyFilePath",
       "type": "string",
-      "label": "Email Body File Path",
+      "label": "E-mail Body File Path",
       "defaultValue": "",
       "required": false,
-      "helpMarkDown": "Path to the file containing the email body. This input is required if 'File' is selected for Email Body.",
+      "helpMarkDown": "Path to the file containing the e-mail body. This input is required if 'File' is selected for E-mail Body.",
       "visibleRule": "emailBody = File",
       "groupName": "ConfigureEmail"
     },
@@ -128,7 +128,7 @@
       "label": "Send as HTML",
       "defaultValue": true,
       "required": false,
-      "helpMarkDown": "Check to send the email as HTML.",
+      "helpMarkDown": "Check to send the e-mail as HTML.",
       "groupName": "ConfigureEmail"
     }
   ],

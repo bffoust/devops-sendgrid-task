@@ -12,8 +12,8 @@
     "compile": "npx tsc --project ./SU-SendGrid",
     "move-npm": "mkdirp dist/SU-SendGrid && copyfiles \"./package.json\" dist/SU-SendGrid",
     "move-task": "copyfiles \"./SU-SendGrid/**/!(*.ts)\" dist",
-    "package-rev": "tfx extension create --manifest-globs vss-extension.json --rev-version",
     "package": "tfx extension create --manifest-globs vss-extension.json",
+    "package-rev": "tfx extension create --manifest-globs vss-extension.json --rev-version",
     "restore-prod": "cd dist/SU-SendGrid && npm install --omit=dev",
     "test": "cd SU-SendGrid && npx tsc && npx mocha tests/**/*.js"
   },
