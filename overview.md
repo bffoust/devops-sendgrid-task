@@ -34,5 +34,8 @@ Install the SendGrid E-mail Task in your Azure DevOps organization. Find it in t
   * **Local File**: Specify a local file path to load the e-mail body content from a file.
   To send HTML, enter your HTML here or in the file and check the _Send as HTML_ option. _(Required)_
 * **Send as HTML**: Enable this option to send the e-mail body as HTML. _(Optional)_
+* **Configure CC or BCC addresses**: add carbon copy addresses.
+  * **CC E-mail Address**: One or more recipient e-mail addresses, separated by commas. You may also include display names. _(Optional)_
+  * **BCC E-mail Address**: One or more recipient e-mail addresses, separated by commas. You may also include display names. _(Optional)_
 
 ![Add SendGrid E-mail Task](https://github.com/bffoust/devops-sendgrid-task/blob/rc/images/Configure.png)

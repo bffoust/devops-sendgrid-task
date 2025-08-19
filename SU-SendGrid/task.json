@@ -3,7 +3,7 @@
   "id": "1d03e40f-ba2b-48ca-b560-33ddc53caa01",
   "name": "su-sendgrid",
   "friendlyName": "SendGrid E-Mail",
-  "description": "SendGrid Azure DevOps Extension",
+  "description": "Easily send e-mails from your Azure DevOps pipelines using SendGrid. This task allows you to configure recipients, subject, and body content, with support for both HTML and plain text e-mails.",
   "author": "Bruce Foust",
   "helpMarkDown": "",
   "category": "Utility",
@@ -14,7 +14,7 @@
   "version": {
     "Major": 0,
     "Minor": 2,
-    "Patch": 36
+    "Patch": 37
   },
   "instanceNameFormat": "SendGrid E-Mail",
   "groups": [
@@ -65,19 +65,19 @@
     {
       "name": "ccEmailAddress",
       "type": "string",
-      "label": "CC E-mail Address",
+      "label": "CC E-mail Address(s)",
       "defaultValue": "",
       "required": false,
-      "helpMarkDown": "E-mail address(s) of the cc recipient(s). Use a comma (,) separated list if you have multiple e-mail addresses. (Eg. alex.johnson@example.com, jamie.lee@example.com) or the Name and the E-mail Address (Eg. Alex Johnson <alex.johnson@example.com>, Jamie Lee <jamie.lee@example.com>)",
+      "helpMarkDown": "One or more recipient e-mail addresses, separated by commas. You may also include display names",
       "groupName": "ConfigureCopyEmail"
     },
     {
       "name": "bccEmailAddress",
       "type": "string",
-      "label": "BCC E-mail Address",
+      "label": "BCC E-mail Address(s)",
       "defaultValue": "",
       "required": false,
-      "helpMarkDown": "E-mail address(s) of the bcc recipient(s). Use a comma (,) separated list if you have multiple e-mail addresses. (Eg. alex.johnson@example.com, jamie.lee@example.com) or the Name and the E-mail Address (Eg. Alex Johnson <alex.johnson@example.com>, Jamie Lee <jamie.lee@example.com>)",
+      "helpMarkDown": "One or more recipient e-mail addresses, separated by commas. You may also include display names",
       "groupName": "ConfigureCopyEmail"
     },
     {
