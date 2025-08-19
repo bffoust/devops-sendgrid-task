@@ -20,5 +20,8 @@ Install the SendGrid E-mail Task in your Azure DevOps organization. Find it in t
 * **Sender Email Address**: The sender's email address. You may specify just the email (e.g., alex.johnson@example.com) or include a display name (e.g., Alex Johnson <alex.johnson@example.com>). _(Required)_
 * **Recipient Email Addresses**: One or more recipient email addresses, separated by commas. You may also include display names. _(Required)_
 * **Subject**: The subject line for the email. _(Required)_
-* **Email Body**: The content of the email. To send HTML, enter your HTML here and check the _Send as HTML_ option. _(Required)_
+* **Email Body**: The content of the email. You can provide the body in two ways:
+  * **Text**: Enter the email body directly as text.
+  * **Local File**: Specify a local file path to load the email body content from a file.
+  To send HTML, enter your HTML here or in the file and check the _Send as HTML_ option. _(Required)_
 * **Send as HTML**: Enable this option to send the email body as HTML. _(Optional)_

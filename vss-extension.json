@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "su-sendgrid",
   "name": "SendGrid E-Mail",
-  "version": "0.2.33",
+  "version": "0.2.34",
   "publisher": "BFoust",
   "targets": [
       {
@@ -51,7 +51,7 @@
   },
   "files": [
       {
-          "path": "SU-SendGrid"
+          "path": "dist/SU-SendGrid"
       }
   ],
   "contributions": [
@@ -62,7 +62,7 @@
               "ms.vss-distributed-task.tasks"
           ],
           "properties": {
-              "name": "su-sendgrid"
+              "name": "dist/SU-SendGrid"
           }
       }
   ]
