@@ -1,0 +1,151 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+  "id": "1d03e40f-ba2b-48ca-b560-33ddc53caa01",
+  "name": "su-sendgrid",
+  "friendlyName": "SendGrid E-Mail",
+  "description": "Easily send e-mails from your Azure DevOps pipelines using SendGrid. This task allows you to configure recipients, subject, and body content, with support for both HTML and plain text e-mails.",
+  "author": "Bruce Foust",
+  "helpMarkDown": "",
+  "category": "Utility",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "version": {
+    "Major": 0,
+    "Minor": 2,
+    "Patch": 37
+  },
+  "instanceNameFormat": "SendGrid E-Mail",
+  "groups": [
+    {
+      "name": "ConfigureSendGrid",
+      "displayName": "Configure SendGrid",
+      "isExpanded": true
+    },
+    {
+      "name": "ConfigureEmail",
+      "displayName": "Configure E-mail",
+      "isExpanded": true
+    },
+    {
+      "name": "ConfigureCopyEmail",
+      "displayName": "Configure CC or BCC addresses",
+      "isExpanded": false
+    }
+  ],
+  "inputs": [
+    {
+      "name": "SendGridAPIKey",
+      "type": "string",
+      "label": "SendGgrid API Key",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Generate your API Key from the SendGrid Portal",
+      "groupName": "ConfigureSendGrid"
+    },
+    {
+      "name": "senderEmailAddress",
+      "type": "string",
+      "label": "Sender E-mail Address",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "E-mail address of the sender. The value can either be only the E-mail Address (Eg. alex.johnson@example.com)",
+      "groupName": "ConfigureEmail"
+    },
+    {
+      "name": "recipientEmailAddress",
+      "type": "string",
+      "label": "Recipient E-mail Address(s)",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "E-mail address(s) of the recipient(s). Use a comma (,) separated list if you have multiple e-mail addresses. (Eg. alex.johnson@example.com, jamie.lee@example.com) or the Name and the E-mail Address (Eg. Alex Johnson <alex.johnson@example.com>, Jamie Lee <jamie.lee@example.com>)",
+      "groupName": "ConfigureEmail"
+    },
+    {
+      "name": "ccEmailAddress",
+      "type": "string",
+      "label": "CC E-mail Address(s)",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "One or more recipient e-mail addresses, separated by commas. You may also include display names",
+      "groupName": "ConfigureCopyEmail"
+    },
+    {
+      "name": "bccEmailAddress",
+      "type": "string",
+      "label": "BCC E-mail Address(s)",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "One or more recipient e-mail addresses, separated by commas. You may also include display names",
+      "groupName": "ConfigureCopyEmail"
+    },
+    {
+      "name": "emailSubject",
+      "type": "string",
+      "label": "Subject",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Subject of the e-mail.",
+      "groupName": "ConfigureEmail"
+    },
+    {
+      "name": "emailBody",
+      "type": "pickList",
+      "label": "E-mail Body",
+      "defaultValue": "Text",
+      "required": true,
+      "helpMarkDown": "Body of the e-mail.",
+      "options": {
+        "text": "Text",
+        "file": "File"
+      },
+      "groupName": "ConfigureEmail"
+    },
+    {
+      "name": "emailBodyText",
+      "type": "multiLine",
+      "label": "E-mail Body text",
+      "defaultValue": "SendGrid E-mail from Azure DevOps Pipeline",
+      "required": false,
+      "helpMarkDown": "E-mail body text. HTML tags are allowed. This input is required if 'Text' is selected for E-mail Body.",
+      "visibleRule": "emailBody = Text",
+      "groupName": "ConfigureEmail"
+    },
+    {
+      "name": "emailBodyFilePath",
+      "type": "string",
+      "label": "E-mail Body File Path",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Path to the file containing the e-mail body. This input is required if 'File' is selected for E-mail Body.",
+      "visibleRule": "emailBody = File",
+      "groupName": "ConfigureEmail"
+    },
+    {
+      "name": "sendAsHTML",
+      "type": "boolean",
+      "label": "Send as HTML",
+      "defaultValue": true,
+      "required": false,
+      "helpMarkDown": "Check to send the e-mail as HTML.",
+      "groupName": "ConfigureEmail"
+    }
+  ],
+  "execution": {
+    "Node20_1": {
+      "target": "index.js"
+    }
+  },
+  "restrictions": {
+    "commands": {
+      "mode": "restricted"
+    },
+    "settableVariables": {
+      "allowed": [
+        "variable1",
+        "test*"
+      ]
+    }
+  }
+}
