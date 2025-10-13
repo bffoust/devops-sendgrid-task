@@ -1,7 +1,7 @@
 <!-- markdownlint-disable MD034 -->
 <!-- markdownlint-disable MD041 -->
 [![Visual Studio Marketplace](https://img.shields.io/badge/Visual%20Studio%20Marketplace-install-brightgreen.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=BFoust.su-sendgrid)
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/bffoust/devops-sendgrid-task/blob/rc/LICENSE.md)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/bffoust/devops-sendgrid-task/blob/master/LICENSE.md)
 
 # SendGrid E-mail Task
 
@@ -16,7 +16,7 @@ Easily send e-mails from your Azure DevOps pipelines using SendGrid. This task a
 
 Install the SendGrid E-mail Task in your Azure DevOps organization. Find it in the _Utility_ section of the task list and add it to your build or release pipeline.
 
-![Add SendGrid E-mail Task](https://github.com/bffoust/devops-sendgrid-task/blob/rc/images/AddTask.png)
+![Add SendGrid E-mail Task](https://github.com/bffoust/devops-sendgrid-task/blob/master/images/AddTask.png)
 
 ## Configuration
 
@@ -38,4 +38,4 @@ Install the SendGrid E-mail Task in your Azure DevOps organization. Find it in t
   * **CC E-mail Address**: One or more recipient e-mail addresses, separated by commas. You may also include display names. _(Optional)_
   * **BCC E-mail Address**: One or more recipient e-mail addresses, separated by commas. You may also include display names. _(Optional)_
 
-![Add SendGrid E-mail Task](https://github.com/bffoust/devops-sendgrid-task/blob/rc/images/Configure.png)
+![Add SendGrid E-mail Task](https://github.com/bffoust/devops-sendgrid-task/blob/master/images/Configure.png)
